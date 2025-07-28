@@ -1,124 +1,121 @@
-# Simple Express REST API (Users & Todos)
+# API REST Express Simple (Utilisateurs & Tâches)
 
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-A straightforward learning project to demonstrate the fundamental concepts of building a RESTful API using Node.js and Express.js. This API manages two primary resources: `Users` and `Todos`.
+Un projet d'apprentissage simple pour démontrer les concepts fondamentaux de la création d'une API RESTful en utilisant Node.js et Express.js. Cette API gère deux ressources principales : les `Utilisateurs` et les `Tâches` (Todos).
 
-**Note:** This project uses in-memory data storage, meaning all data will be reset when the server restarts. It's designed for learning API concepts, not for persistent data storage.
+**Remarque :** Ce projet utilise un stockage de données en mémoire, ce qui signifie que toutes les données seront réinitialisées au redémarrage du serveur. Il est conçu pour l'apprentissage des concepts d'API, et non pour le stockage persistant des données.
 
-## ✨ Features
+## ✨ Fonctionnalités
 
-* **User Management:**
-    * Create new users (`POST /users`)
-    * Retrieve all users (`GET /users`)
-    * Retrieve a single user by ID (`GET /users/:id`)
-    * Update an existing user by ID (`PUT /users/:id`)
-    * Delete a user by ID (`DELETE /users/:id`)
-* **Todo Management:**
-    * Create new todo items (`POST /todos`)
-    * Retrieve all todo items (`GET /todos`)
-    * Retrieve a single todo item by ID (`GET /todos/:id`)
-    * Update an existing todo item by ID (`PUT /todos/:id`)
-    * Delete a todo item by ID (`DELETE /todos/:id`)
-* **Basic Data Relationship:** Deleting a user also deletes their associated todo items.
-* **Proper HTTP Status Codes:** Responses use appropriate status codes (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 500 Internal Server Error).
-* **Input Validation:** Basic checks for required fields in `POST` and `PUT` requests.
-* **Unique ID Generation:** Simple incrementing IDs for new resources.
-* **Centralized Error Handling:** Basic middleware to catch unhandled errors.
-* **Request Logging:** Console logs for incoming HTTP requests.
+* **Gestion des Utilisateurs :**
+    * Créer de nouveaux utilisateurs (`POST /users`)
+    * Récupérer tous les utilisateurs (`GET /users`)
+    * Récupérer un seul utilisateur par ID (`GET /users/:id`)
+    * Mettre à jour un utilisateur existant par ID (`PUT /users/:id`)
+    * Supprimer un utilisateur par ID (`DELETE /users/:id`)
+* **Gestion des Tâches (Todos) :**
+    * Créer de nouvelles tâches (`POST /todos`)
+    * Récupérer toutes les tâches (`GET /todos`)
+    * Récupérer une seule tâche par ID (`GET /todos/:id`)
+    * Mettre à jour une tâche existante par ID (`PUT /todos/:id`)
+    * Supprimer une tâche par ID (`DELETE /todos/:id`)
+* **Relation de Données Basique :** La suppression d'un utilisateur entraîne également la suppression de ses tâches associées.
+* **Codes de Statut HTTP Appropriés :** Les réponses utilisent des codes de statut appropriés (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 500 Internal Server Error).
+* **Validation des Entrées :** Vérifications de base pour les champs requis dans les requêtes `POST` et `PUT`.
+* **Génération d'ID Uniques :** IDs incrémentiels simples pour les nouvelles ressources.
+* **Gestion Centralisée des Erreurs :** Middleware de base pour intercepter les erreurs non gérées.
+* **Journalisation des Requêtes :** Logs console pour les requêtes HTTP entrantes.
 
-## 🚀 Getting Started
+## 🚀 Démarrage
 
-Follow these steps to get the project up and running on your local machine.
+Suivez ces étapes pour démarrer le projet sur votre machine locale.
 
-### Prerequisites
+### Prérequis
 
-* Node.js (LTS version recommended)
-* npm (comes with Node.js)
+* Node.js (version LTS recommandée)
+* npm (fourni avec Node.js)
 
 ### Installation
 
-1.  **Clone the repository:**
+1.  **Cloner le dépôt :**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    # Replace 'your-username/your-repo-name.git' with your actual repository URL
+    git clone https://github.com/Amen-ellah-kerimi/Express-Rest-API.git
     ```
-2.  **Navigate into the project directory:**
+2.  **Naviguer dans le répertoire du projet :**
     ```bash
-    cd express_api # or whatever your project folder is named
+    cd Express-Rest-API
     ```
-3.  **Install dependencies:**
+3.  **Installer les dépendances :**
     ```bash
     npm install
     ```
 
-### Running the API
+### Exécution de l'API
 
-1.  **Start the server:**
+1.  **Démarrer le serveur :**
     ```bash
     node server.js
     ```
-2.  You should see output similar to this in your terminal:
+2.  Vous devriez voir une sortie similaire à celle-ci dans votre terminal :
     ```
     Welcome to our REST API with Express
 
     You can open your browser at this link http://localhost:3000/
     Server started on http://localhost:3000
     ```
-3.  The API will be running on `http://localhost:3000`.
+3.  L'API sera opérationnelle sur `http://localhost:3000`.
 
-## 💡 API Endpoints
+## 💡 Points de Terminaison API
 
-You can test these endpoints using tools like [Postman](https://www.postman.com/), [Insomnia](https://insomnia.rest/), `curl`, or by integrating them into a frontend application.
+Vous pouvez tester ces points de terminaison à l'aide d'outils comme [Postman](https://www.postman.com/), [Insomnia](https://insomnia.rest/), `curl`, ou en les intégrant dans une application frontend.
 
-### Users
+### Utilisateurs
 
-| Method | Endpoint      | Description                                | Request Body (Example)                               |
-| :----- | :------------ | :----------------------------------------- | :--------------------------------------------------- |
-| `GET`  | `/users`      | Get all users                              | `N/A`                                                |
-| `GET`  | `/users/:id`  | Get a single user by ID                    | `N/A`                                                |
-| `POST` | `/users`      | Create a new user                          | `{ "name": "Alice", "email": "alice@example.com" }` |
-| `PUT`  | `/users/:id`  | Update an existing user                    | `{ "name": "Alice Smith", "email": "alice.s@example.com" }` |
-| `DELETE`| `/users/:id`  | Delete a user by ID (and associated todos) | `N/A`                                                |
+| Méthode | Point de Terminaison | Description                              | Corps de la Requête (Exemple)                           |
+| :------ | :------------------- | :--------------------------------------- | :------------------------------------------------------ |
+| `GET`   | `/users`             | Obtenir tous les utilisateurs            | `N/A`                                                   |
+| `GET`   | `/users/:id`         | Obtenir un seul utilisateur par ID       | `N/A`                                                   |
+| `POST`  | `/users`             | Créer un nouvel utilisateur              | `{ "name": "Alice", "email": "alice@example.com" }`     |
+| `PUT`   | `/users/:id`         | Mettre à jour un utilisateur existant    | `{ "name": "Alice Smith", "email": "alice.s@example.com" }` |
+| `DELETE`| `/users/:id`         | Supprimer un utilisateur (et les tâches associées) | `N/A`                                                   |
 
-### Todos
+### Tâches (Todos)
 
-| Method | Endpoint      | Description                                | Request Body (Example)                                     |
-| :----- | :------------ | :----------------------------------------- | :--------------------------------------------------------- |
-| `GET`  | `/todos`      | Get all todo items                         | `N/A`                                                      |
-| `GET`  | `/todos/:id`  | Get a single todo item by ID               | `N/A`                                                      |
-| `POST` | `/todos`      | Create a new todo item                     | `{ "title": "Buy groceries", "completed": false, "userId": 1 }` |
-| `PUT`  | `/todos/:id`  | Update an existing todo item               | `{ "title": "Buy groceries", "completed": true, "userId": 1 }` |
-| `DELETE`| `/todos/:id`  | Delete a todo item by ID                   | `N/A`                                                      |
+| Méthode | Point de Terminaison | Description                              | Corps de la Requête (Exemple)                                    |
+| :------ | :------------------- | :--------------------------------------- | :--------------------------------------------------------------- |
+| `GET`   | `/todos`             | Obtenir toutes les tâches                | `N/A`                                                            |
+| `GET`   | `/todos/:id`         | Obtenir une seule tâche par ID           | `N/A`                                                            |
+| `POST`  | `/todos`             | Créer une nouvelle tâche                 | `{ "title": "Acheter des légumes", "completed": false, "userId": 1 }` |
+| `PUT`   | `/todos/:id`         | Mettre à jour une tâche existante        | `{ "title": "Acheter des légumes", "completed": true, "userId": 1 }` |
+| `DELETE`| `/todos/:id`         | Supprimer une tâche par ID               | `N/A`                                                            |
 
-## 🛠️ Project Structure
-
+## 🛠️ Structure du Projet
 .
-├── server.js               # Main Express.js application file
-├── package.json            # Project dependencies and scripts
-├── package-lock.json       # Dependency tree lock file
-└── README.md               # This file
+├── server.js               # Fichier principal de l'application Express.js
+├── package.json            # Dépendances et scripts du projet
+├── package-lock.json       # Fichier de verrouillage de l'arborescence des dépendances
+└── README.md               # Ce fichier
 
+## 📚 Objectifs d'Apprentissage
 
-## 📚 Learning Objectives
+Ce projet aide à comprendre :
+* Comment configurer un serveur Node.js et Express.js de base.
+* Les principes de la conception d'API RESTful (ressources, méthodes HTTP, codes de statut).
+* L'implémentation des opérations CRUD pour différentes entités de données.
+* La gestion des données JSON dans les requêtes et les réponses.
+* Le routage et le middleware de base dans Express.js.
 
-This project helps in understanding:
-* How to set up a basic Node.js and Express.js server.
-* The principles of RESTful API design (resources, HTTP methods, status codes).
-* Implementing CRUD operations for different data entities.
-* Handling JSON data in requests and responses.
-* Basic routing and middleware in Express.js.
+## 🤝 Contribution
 
-## 🤝 Contributing
+Il s'agit d'un projet d'apprentissage personnel, les contributions ne sont donc pas activement recherchées. Cependant, n'hésitez pas à forker le dépôt et à l'expérimenter !
 
-This is a personal learning project, so contributions are not actively sought. However, feel free to fork the repository and experiment with it!
+## 📄 Licence
 
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
+Ce projet est open-source et disponible sous la [Licence MIT](LICENSE).
 
 ---
 
-**Happy Coding!**
+**Bon codage !**
